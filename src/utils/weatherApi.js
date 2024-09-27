@@ -21,7 +21,7 @@ export const filterWeatherData = (data) => {
 };
 
 const isDay = ({ sunrise, sunset }, now) => {
-  const now = Date.now();
+  // const now = Date.now();
   return sunrise * 1000 < now && now < sunset * 1000;
 };
 

@@ -16,7 +16,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
-  const handleCardClick = () => {
+  const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
