@@ -23,6 +23,7 @@
 }
 
 .modal__close {
+  background-image: url(../src/assets/closeicon.png) no-repeat;
   position: absolute;
   top: 20px;
   right: 28px;
