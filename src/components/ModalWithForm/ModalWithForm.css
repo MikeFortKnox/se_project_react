@@ -50,6 +50,10 @@
   border-radius: 10px;
 }
 
+.modal__content_type_image {
+  padding: 0;
+}
+
 .modal__form {
   display: flex;
   flex-direction: column;
