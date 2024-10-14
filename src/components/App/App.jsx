@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -59,7 +60,20 @@ function App() {
       >
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            >
+              <Route path="/profile" element={<p>PROFILE</p>}></Route>
+            </Route>
+          </Routes>
+
           <Footer />
         </div>
         {activeModal === "add-garment" && (
@@ -70,9 +84,9 @@ function App() {
           />
         )}
         <ItemModal
-          // activeModal={activeModal}
+          activeModal={activeModal}
           card={selectedCard}
-          // onClose={closeActiveModal}
+          onClose={closeActiveModal}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
