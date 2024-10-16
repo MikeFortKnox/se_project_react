@@ -5,11 +5,13 @@ import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import Profile from "../Profile/Profile";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { getItems, addItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -21,6 +23,8 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
+  const [addClothingItems, setAddClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -35,8 +39,26 @@ function App() {
     setActiveModal("");
   };
 
-  const onAddItem = (e) => {
-    console.log(e);
+  const onAddItem = (name, imageUrl, weather) => {
+    console.log({ name, imageUrl, weather });
+    // const formData = new FormData(e.target);
+    // const data = {
+    //   name: formData.get("name"),
+    //   imageUrl: formData.get("imageUrl"),
+    //   weather: formData.get("weather"),
+    // };
+
+    // if (!isValidUrl(imageUrl)) {
+    //   alert("Please enter a valid URL for the image.");
+    //   return; // Stop further execution if the URL is invalid
+    // }
+    // console.log([...data.entries()]);
+    // console.log(e); // take form values from e
+    // addItems({ name, imageUrl, weather })
+    // .then((data) => {
+    //   // set the add items
+    // })
+    // .catch(console.error);
   };
 
   const handleToggleSwitchChange = () => {
@@ -53,6 +75,16 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+        setClothingItems(data);
+        //set the clothing items
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -64,14 +96,18 @@ function App() {
             <Route
               path="/"
               element={
+                // pass clothingItems as a prop
                 <Main
+                  clothingItems={clothingItems}
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                 />
               }
-            >
-              <Route path="/profile" element={<p>PROFILE</p>}></Route>
-            </Route>
+            ></Route>
+            <Route
+              path="/profile"
+              element={<Profile onCardClick={handleCardClick} />}
+            ></Route>
           </Routes>
 
           <Footer />
