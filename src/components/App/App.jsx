@@ -11,7 +11,8 @@ import AddItemModal from "../AddItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, addItems } from "../../utils/api";
+import { getItems, addItems, deleteItem } from "../../utils/api";
+import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -59,6 +60,16 @@ function App() {
     //   // set the add items
     // })
     // .catch(console.error);
+  };
+
+  const onDeleteItem = (id) => {
+    deleteItem(id).then(() => {
+      const updatedClothingItems = clothingItems.filter(
+        (item) => item._id !== id
+      );
+      setClothingItems(updatedClothingItems);
+    });
+    // remove the card item from clothingItems,
   };
 
   const handleToggleSwitchChange = () => {
