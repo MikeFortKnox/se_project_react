@@ -42,6 +42,11 @@ function App() {
 
   const onAddItem = (name, imageUrl, weather) => {
     console.log({ name, imageUrl, weather });
+    const addClothingItems = { name, imageUrl, weather };
+    setAddClothingItems((defaultClothingItems) => [
+      ...defaultClothingItems,
+      clothingItems,
+    ]);
     // const formData = new FormData(e.target);
     // const data = {
     //   name: formData.get("name"),
@@ -69,7 +74,7 @@ function App() {
       );
       setClothingItems(updatedClothingItems);
     });
-    // remove the card item from clothingItems,
+    // remove the card item from clothingItems
   };
 
   const handleToggleSwitchChange = () => {
@@ -91,7 +96,6 @@ function App() {
       .then((data) => {
         console.log(data);
         setClothingItems(data);
-        //set the clothing items
       })
       .catch(console.error);
   }, []);
@@ -107,7 +111,6 @@ function App() {
             <Route
               path="/"
               element={
-                // pass clothingItems as a prop
                 <Main
                   clothingItems={clothingItems}
                   weatherData={weatherData}
@@ -117,7 +120,12 @@ function App() {
             ></Route>
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             ></Route>
           </Routes>
 

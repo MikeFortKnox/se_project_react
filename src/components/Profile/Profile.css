@@ -1,4 +1,7 @@
 .profile {
-  display: flex;
   gap: 70px;
+}
+
+.profile__clothing-items {
+  display: flex;
 }

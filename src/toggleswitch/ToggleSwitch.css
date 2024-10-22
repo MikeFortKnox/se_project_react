@@ -20,6 +20,8 @@
   text-align: center;
   cursor: pointer;
   position: absolute;
+  margin-top: -2px;
+  margin-left: -4px;
 }
 
 .switch__slider-F {
@@ -34,15 +36,15 @@
 
 .switch__temp-C {
   position: absolute;
-  top: -7px;
-  left: 14px;
+  top: -9px;
+  left: 5px;
   color: white;
 }
 
 .switch__temp-F {
   position: absolute;
-  top: -7px;
-  left: 38px;
+  top: -9px;
+  left: 35px;
   color: white;
 }
 

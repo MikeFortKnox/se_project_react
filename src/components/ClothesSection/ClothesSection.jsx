@@ -1,22 +1,17 @@
 import { useEffect, useState } from "react";
 import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
+import "./ClothesSection.css";
 
 function ClothesSection({ onCardClick, clothingItems }) {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems(clothingItems);
-  }, [clothingItems]);
-
   return (
     <div className="clothes-section">
       <div>
-        <p>Your items</p>
-        <button>+ Add New</button>
+        <p className="clothes-section__text">Your items</p>
+        <button className="clothes-section__button">+ Add New</button>
       </div>
       <ul className="clothes-section__list">
-        {defaultClothingItems.map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
           );

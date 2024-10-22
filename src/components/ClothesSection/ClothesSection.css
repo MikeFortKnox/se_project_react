@@ -1,0 +1,10 @@
+.clothes-section {
+  display: flex;
+}
+
+.clothes-section__list {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
