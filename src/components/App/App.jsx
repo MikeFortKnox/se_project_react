@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItems, deleteItem } from "../../utils/api";
 import ItemCard from "../ItemCard/ItemCard";
+import ClothesSection from "../ClothesSection/ClothesSection";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -41,30 +42,16 @@ function App() {
   };
 
   const onAddItem = (name, imageUrl, weather) => {
-    console.log({ name, imageUrl, weather });
-    const addClothingItems = { name, imageUrl, weather };
-    setAddClothingItems((defaultClothingItems) => [
-      ...defaultClothingItems,
-      clothingItems,
-    ]);
-    // const formData = new FormData(e.target);
-    // const data = {
-    //   name: formData.get("name"),
-    //   imageUrl: formData.get("imageUrl"),
-    //   weather: formData.get("weather"),
-    // };
-
-    // if (!isValidUrl(imageUrl)) {
-    //   alert("Please enter a valid URL for the image.");
-    //   return; // Stop further execution if the URL is invalid
-    // }
-    // console.log([...data.entries()]);
-    // console.log(e); // take form values from e
-    // addItems({ name, imageUrl, weather })
-    // .then((data) => {
-    //   // set the add items
-    // })
-    // .catch(console.error);
+    addItems({ name, imageUrl, weather })
+      .then((data) => {
+        console.log(data);
+        setClothingItems((currentClothingItems) => [
+          ...currentClothingItems,
+          data,
+        ]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const onDeleteItem = (id) => {
@@ -124,6 +111,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             ></Route>
@@ -131,6 +119,7 @@ function App() {
 
           <Footer />
         </div>
+
         {activeModal === "add-garment" && (
           <AddItemModal
             closeActiveModal={closeActiveModal}

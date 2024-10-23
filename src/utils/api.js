@@ -10,7 +10,7 @@ function addItems({ name, imageUrl, weather }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      "Content-Type": "applications/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       name,
