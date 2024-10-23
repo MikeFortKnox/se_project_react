@@ -55,12 +55,16 @@ function App() {
   };
 
   const onDeleteItem = (id) => {
-    deleteItem(id).then(() => {
-      const updatedClothingItems = clothingItems.filter(
-        (item) => item._id !== id
-      );
-      setClothingItems(updatedClothingItems);
-    });
+    deleteItem(id)
+      .then(() => {
+        const updatedClothingItems = clothingItems.filter(
+          (item) => item._id !== id
+        );
+        setClothingItems(updatedClothingItems);
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+      });
     // remove the card item from clothingItems
   };
 
@@ -131,6 +135,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onDeleteItem={onDeleteItem}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
