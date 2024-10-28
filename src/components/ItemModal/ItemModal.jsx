@@ -1,9 +1,21 @@
+import React, { useState } from "react";
 import "./ItemModal.css";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
   const handleOpenDelete = (event) => {
     event.preventDefault();
     onDeleteItem(name, imageUrl, weather);
+  };
+
+  const handleConfirmDelete = () => {
+    onDeleteItem(card); // Call the delete function with card data
+    setDeleteConfirmOpen(false); // Close the confirmation modal
+    onClose();
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteConfirmOpen(false);
   };
 
   return (

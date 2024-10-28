@@ -107,6 +107,12 @@
       "imageUrl": "http://google.com",
       "weather": "warm",
       "_id": 17
+    },
+    {
+      "name": "Earmuffs",
+      "imageUrl": "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/19597647_fpx.tif",
+      "weather": "cold",
+      "_id": 18
     }
   ]
 }
