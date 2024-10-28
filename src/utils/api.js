@@ -25,7 +25,6 @@ function addItems({ name, imageUrl, weather }) {
 function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-    headers: {},
   }).then((res) => {
     return res.json();
   });

@@ -3,9 +3,11 @@ import "./ItemModal.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+
   const handleOpenDelete = (event) => {
     event.preventDefault();
-    onDeleteItem(name, imageUrl, weather);
+    onDeleteItem(true);
   };
 
   const handleConfirmDelete = () => {
@@ -33,6 +35,11 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>
+      <DeleteConfirmModal
+        isOpen={deleteConfirmOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }
