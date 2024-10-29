@@ -8,3 +8,19 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.clothes-section__text {
+  position: absolute;
+  left: 450px;
+  top: 170px;
+}
+
+.clothes-section__button {
+  position: absolute;
+  left: 530px;
+  top: 185px;
+  background: none;
+  border: none;
+  color: gray;
+  cursor: pointer;
+}

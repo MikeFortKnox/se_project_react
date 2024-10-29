@@ -1,0 +1,29 @@
+.modal__delete-popup {
+  width: 670px;
+  height: 220px;
+  border-radius: 20px 0px 0px 0px;
+  border: 1px 0px 0px 0px;
+}
+
+.modal__text {
+  font-weight: 700;
+  /* height: 48px; */
+  line-height: 24px;
+  font-size: 20px;
+  align-items: center;
+}
+
+.modal__confirm-button {
+  background: none;
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+  top: 148px;
+  left: 266px;
+}
+
+.modal__cancel-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

@@ -11,13 +11,14 @@
   top: 15px;
   margin: 0;
   gap: 0px;
-  border-radius: 4px 0px 0px 0px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 1);
-  font-family: Cabinet Grotesk;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 16px;
   font-weight: 100;
   line-height: 20px;
   text-align: center;
+  width: 70px;
 }
 
 .card__image {

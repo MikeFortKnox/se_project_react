@@ -7,11 +7,11 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
 
   const handleOpenDelete = (event) => {
     event.preventDefault();
-    onDeleteItem(true);
+    setDeleteConfirmOpen(true);
   };
 
   const handleConfirmDelete = () => {
-    onDeleteItem(card); // Call the delete function with card data
+    onDeleteItem(card._id); // Call the delete function with card data
     setDeleteConfirmOpen(false); // Close the confirmation modal
     onClose();
   };
@@ -28,7 +28,9 @@ function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
           type="button"
           className="modal__close modal__close_content_image"
         ></button>
-        <button onClick={handleOpenDelete}>Delete</button>
+        <button className="modal__delete-button" onClick={handleOpenDelete}>
+          Delete Item
+        </button>
         <img src={card.imageUrl} alt="card" className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
