@@ -13,11 +13,13 @@
   position: absolute;
   left: 450px;
   top: 170px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
 }
 
 .clothes-section__button {
   position: absolute;
-  left: 530px;
+  left: 550px;
   top: 185px;
   background: none;
   border: none;
