@@ -6,7 +6,7 @@ import "./ClothesSection.css";
 function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
   return (
     <div className="clothes-section">
-      <div>
+      <div className="clothes-section__container">
         <p className="clothes-section__text">Your items</p>
         {handleAddClick && (
           <button

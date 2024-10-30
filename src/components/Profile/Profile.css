@@ -13,4 +13,5 @@
 
 .profile__clothing-items {
   display: flex;
+  /* width: 100%; */
 }
