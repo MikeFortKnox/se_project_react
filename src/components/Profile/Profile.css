@@ -9,6 +9,7 @@
 .profile__sidebar {
   display: flex;
   flex-wrap: wrap;
+  flex: auto;
 }
 
 .profile__clothing-items {
