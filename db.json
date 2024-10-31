@@ -101,12 +101,6 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
-    },
-    {
-      "name": "Earmuffs",
-      "imageUrl": "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/19597647_fpx.tif",
-      "weather": "cold",
-      "_id": 17
     }
   ]
 }

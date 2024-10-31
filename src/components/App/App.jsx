@@ -15,6 +15,7 @@ import { getItems, addItems, deleteItem } from "../../utils/api";
 import ItemCard from "../ItemCard/ItemCard";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import ToggleSwitch from "../toggleswitch/ToggleSwitch";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -29,6 +30,8 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [addClothingItems, setAddClothingItems] = useState([]);
 
+  console.log(selectedCard);
+
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -36,6 +39,10 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleOpenDeleteModal = () => {
+    setActiveModal("delete item");
   };
 
   const closeActiveModal = () => {
@@ -55,11 +62,11 @@ function App() {
       .catch(console.error);
   };
 
-  const onDeleteItem = (id) => {
-    deleteItem(id)
+  const onDeleteItem = () => {
+    deleteItem(selectedCard._id)
       .then(() => {
         const updatedClothingItems = clothingItems.filter(
-          (item) => item._id !== id
+          (item) => item._id !== selectedCard._id
         );
         setClothingItems(updatedClothingItems);
       })
@@ -136,7 +143,12 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          onDeleteItem={onDeleteItem}
+          onDeleteItem={handleOpenDeleteModal}
+        />
+        <DeleteConfirmModal
+          isOpen={activeModal === "delete item"}
+          onClose={closeActiveModal}
+          onConfirm={onDeleteItem}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
