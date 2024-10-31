@@ -14,6 +14,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { getItems, addItems, deleteItem } from "../../utils/api";
 import ItemCard from "../ItemCard/ItemCard";
 import ClothesSection from "../ClothesSection/ClothesSection";
+import ToggleSwitch from "../toggleswitch/ToggleSwitch";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
