@@ -14,7 +14,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { getItems, addItems, deleteItem } from "../../utils/api";
 import ItemCard from "../ItemCard/ItemCard";
 import ClothesSection from "../ClothesSection/ClothesSection";
-import ToggleSwitch from "../toggleswitch/ToggleSwitch";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
@@ -54,8 +54,8 @@ function App() {
       .then((data) => {
         console.log(data);
         setClothingItems((currentClothingItems) => [
-          ...currentClothingItems,
           data,
+          ...currentClothingItems,
         ]);
         closeActiveModal();
       })
@@ -69,6 +69,7 @@ function App() {
           (item) => item._id !== selectedCard._id
         );
         setClothingItems(updatedClothingItems);
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("Failed to delete item:", error);

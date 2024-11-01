@@ -3,22 +3,22 @@ import "./ItemModal.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
-  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  // const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
-  const handleOpenDelete = (event) => {
-    event.preventDefault();
-    setDeleteConfirmOpen(true);
-  };
+  // const handleOpenDelete = (event) => {
+  //   event.preventDefault();
+  //   setDeleteConfirmOpen(true);
+  // };
 
-  const handleConfirmDelete = () => {
-    onDeleteItem(card._id); // Call the delete function with card data
-    setDeleteConfirmOpen(false); // Close the confirmation modal
-    onClose();
-  };
+  // const handleConfirmDelete = () => {
+  //   onDeleteItem(card._id); // Call the delete function with card data
+  //   setDeleteConfirmOpen(false); // Close the confirmation modal
+  //   onClose();
+  // };
 
-  const handleCancelDelete = () => {
-    setDeleteConfirmOpen(false);
-  };
+  // const handleCancelDelete = () => {
+  //   setDeleteConfirmOpen(false);
+  // };
 
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
