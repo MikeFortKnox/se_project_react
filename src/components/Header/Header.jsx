@@ -1,11 +1,18 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.png";
+// import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleLogin,
+  handleRegister,
+  currentUser,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -20,17 +27,39 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
-      <p className="header__username">Terrence Tegegne</p>
-      <Link to="/profile" className="header__link">
-        <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-      </Link>
+      {!isLoggedIn && (
+        <>
+          <button
+            onClick={handleRegister}
+            type="button"
+            className="header__register-button"
+          >
+            SignUp
+          </button>
+          <button
+            onClick={handleLogin}
+            type="button"
+            className="header__signin-button"
+          >
+            Login
+          </button>
+        </>
+      )}
+      {isLoggedIn && (
+        <>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+          <p className="header__username">{currentUser.name}</p>
+          <Link to="/profile" className="header__link">
+            <img src={avatar} alt="avatar" className="header__avatar" />
+          </Link>
+        </>
+      )}
     </header>
   );
 }

@@ -8,6 +8,6 @@
   /* flex-grow: 1; */
 }
 
-.main {
+.card .main {
   flex-grow: 1;
 }

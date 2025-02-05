@@ -1,25 +1,15 @@
 import React, { useState } from "react";
 import "./ItemModal.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function ItemModal({ activeModal, onClose, card, onDeleteItem }) {
-  // const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
-
-  // const handleOpenDelete = (event) => {
-  //   event.preventDefault();
-  //   setDeleteConfirmOpen(true);
-  // };
-
-  // const handleConfirmDelete = () => {
-  //   onDeleteItem(card._id); // Call the delete function with card data
-  //   setDeleteConfirmOpen(false); // Close the confirmation modal
-  //   onClose();
-  // };
-
-  // const handleCancelDelete = () => {
-  //   setDeleteConfirmOpen(false);
-  // };
-
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = card.owner === currentUser._id;
+  const itemDeleteButtonClassName = `modal__delete-button ${
+    isOwn ? "" : "modal__delete-button_hidden"
+  }`;
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
