@@ -29,8 +29,9 @@ import {
   addCardLike,
   removeCardLike,
   updateUserProfile,
+  getCurrentUser,
 } from "../../utils/api.js";
-import { updateUser } from "../../../../se_project_express-main/controllers/users.js";
+// import { updateUser } from "../../../../se_project_express-main/controllers/users.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -50,8 +51,6 @@ function App() {
     email: "",
     password: "",
   });
-
-  console.log(selectedCard);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -104,7 +103,6 @@ function App() {
       .catch((error) => {
         console.error("Failed to delete item:", error);
       });
-    // remove the card item from clothingItems
   };
 
   const handleRegisterModalSubmit = (name, email, password, avatar) => {
@@ -158,11 +156,30 @@ function App() {
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getCurrentUser()
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch(() => {
+          setCurrentUser("");
+          setIsLoggedIn(false);
+        });
+    }
+    // check if the token exists in localStorage
+    // if it does exists, we want to "log the user in" (by fetching to get the user's info using the token)
+    // once the server gives us the user info, we want to set that user info in our currentUser state and set our isLoggedIn state to true
+  }, []);
+
   const handleCardLike = (id, isLiked) => {
     const token = localStorage.getItem("token");
     console.log(token);
+    console.log(isLiked);
     // Check if this card is not currently liked
-    !isLiked
+    return !isLiked
       ? // if so, send a request to add the user's id to the card's likes array
 
         // the first argument is the card's id
@@ -185,10 +202,11 @@ function App() {
           .catch((err) => console.log(err));
   };
 
-  function handleEditModalSubmit(name, avatar) {
+  async function handleEditModalSubmit(name, avatar) {
     try {
-      const updatedUser = updateUserProfile(currentUser._id, { name, avatar });
-      setCurrentUser(updatedUser);
+      const updatedUser = await updateUserProfile(name, avatar);
+      setCurrentUser(updatedUser.data);
+      closeActiveModal();
     } catch (error) {
       console.error("Failed to update User:", error);
     }

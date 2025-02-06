@@ -56,7 +56,11 @@ function Header({
           </button>
           <p className="header__username">{currentUser.name}</p>
           <Link to="/profile" className="header__link">
-            <img src={avatar} alt="avatar" className="header__avatar" />
+            <img
+              src={currentUser.avatar}
+              alt="avatar"
+              className="header__avatar"
+            />
           </Link>
         </>
       )}

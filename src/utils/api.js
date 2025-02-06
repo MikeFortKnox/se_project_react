@@ -68,6 +68,10 @@ function addItems({ name, imageUrl, weather }) {
 function deleteItem(id) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
   }).then(checkResponse);
 }
 
@@ -90,15 +94,26 @@ function removeCardLike(id) {
 }
 
 function updateUserProfile(name, avatar) {
-  return fetch(`${baseUrl}/users`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       name,
       avatar,
     }),
+  }).then(checkResponse);
+}
+
+function getCurrentUser() {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
   }).then(checkResponse);
 }
 
@@ -112,4 +127,5 @@ export {
   addCardLike,
   removeCardLike,
   updateUserProfile,
+  getCurrentUser,
 };
