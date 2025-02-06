@@ -1,6 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a weather app that will allow users to create their own account to reccomend what to wear for the days weather forecast. The project uses an API that gets the live weather forecast from any location. This project is made using React, Node, Express, and CSS. It will implement RESTful APIs and will allow interactivity from users to add their own clothing items to be reccomended by the app based on the weather data.  
 
 Currently, two official plugins are available:
 
