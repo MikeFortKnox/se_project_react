@@ -176,8 +176,6 @@ function App() {
 
   const handleCardLike = (id, isLiked) => {
     const token = localStorage.getItem("token");
-    console.log(token);
-    console.log(isLiked);
     // Check if this card is not currently liked
     return !isLiked
       ? // if so, send a request to add the user's id to the card's likes array

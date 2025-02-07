@@ -90,6 +90,10 @@ function addCardLike(id) {
 function removeCardLike(id) {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${getToken()}`,
+    },
   }).then(checkResponse);
 }
 
