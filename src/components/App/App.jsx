@@ -4,16 +4,16 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Profile from "../Profile/Profile";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import ItemCard from "../ItemCard/ItemCard";
-import ClothesSection from "../ClothesSection/ClothesSection";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+// import ItemCard from "../ItemCard/ItemCard";
+// import ClothesSection from "../ClothesSection/ClothesSection";
+// import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -23,7 +23,6 @@ import {
   getItems,
   addItems,
   deleteItem,
-  checkResponse,
   createUser,
   loginUser,
   addCardLike,
@@ -31,6 +30,7 @@ import {
   updateUserProfile,
   getCurrentUser,
 } from "../../utils/api.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 // import { updateUser } from "../../../../se_project_express-main/controllers/users.js";
 
 function App() {
@@ -41,10 +41,10 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [temp, setTemp] = useState(0);
+  // const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [addClothingItems, setAddClothingItems] = useState([]);
+  // const [addClothingItems, setAddClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: "",
@@ -107,7 +107,7 @@ function App() {
 
   const handleRegisterModalSubmit = (name, email, password, avatar) => {
     return createUser({ name, email, password, avatar })
-      .then((data) => {
+      .then(() => {
         // fetch to the express server to create a user in the database
         // call some function to log the user in. ie: handleLoginModalSubmit
         // close the modal
@@ -234,20 +234,24 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     handleCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               ></Route>
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    onCardClick={handleCardClick}
-                    clothingItems={clothingItems}
-                    handleAddClick={handleAddClick}
-                    handleEditClick={handleEditClick}
-                    handleCardLike={handleCardLike}
-                    handleLogoutClick={handleLogout}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      onCardClick={handleCardClick}
+                      clothingItems={clothingItems}
+                      handleAddClick={handleAddClick}
+                      handleEditClick={handleEditClick}
+                      handleCardLike={handleCardLike}
+                      handleLogoutClick={handleLogout}
+                      isLoggedIn={isLoggedIn}
+                    />
+                  </ProtectedRoute>
                 }
               ></Route>
             </Routes>
@@ -267,6 +271,7 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onDeleteItem={handleOpenDeleteModal}
+            isLoggedIn={isLoggedIn}
           />
           <DeleteConfirmModal
             isOpen={activeModal === "delete item"}
@@ -277,11 +282,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegisterModalSubmit={handleRegisterModalSubmit}
+            handleLogin={handleLogin}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLogin={handleLoginModalSubmit}
+            handleRegister={handleRegister}
           />
 
           <EditProfileModal

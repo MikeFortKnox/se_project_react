@@ -1,6 +1,4 @@
-// import avatar from "../../assets/avatar.png";
 import "./SideBar.css";
-import { updateUserProfile } from "../../utils/api";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 

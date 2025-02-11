@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./RegisterModal";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-const RegisterModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
+const RegisterModal = ({
+  onClose,
+  onRegisterModalSubmit,
+  isOpen,
+  handleLogin,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,7 +48,7 @@ const RegisterModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="register__name"
           placeholder="Name"
           value={name}
           onChange={handleName}
@@ -54,7 +59,7 @@ const RegisterModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="register__email"
           placeholder="Enter Email"
           value={email}
           onChange={handleEmail}
@@ -66,7 +71,7 @@ const RegisterModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
         <input
           type="text"
           className="modal__input"
-          id="password"
+          id="register__password"
           placeholder="Enter Password"
           value={password}
           onChange={handlePassword}
@@ -77,12 +82,20 @@ const RegisterModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
         <input
           type="URL"
           className="modal__input"
-          id="avatar"
+          id="register__avatar"
           placeholder="Enter Avatar URL"
           value={avatar}
           onChange={handleAvatar}
         />
       </label>
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit">
+          Register
+        </button>
+        <button className="modal__to-login" type="button" onClick={handleLogin}>
+          or Login
+        </button>
+      </div>
     </ModalWithForm>
   );
 };

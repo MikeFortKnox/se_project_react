@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import SideBar from "../SideBar/SideBar";
+import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./EditProfileModal.css";
 

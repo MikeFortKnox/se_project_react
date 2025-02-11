@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
@@ -7,6 +7,7 @@ function ClothesSection({
   clothingItems,
   handleAddClick,
   handleCardLike,
+  isLoggedIn,
 }) {
   return (
     <div className="clothes-section">
@@ -26,6 +27,7 @@ function ClothesSection({
               item={item}
               onCardClick={onCardClick}
               handleCardLike={handleCardLike}
+              isLoggedIn={isLoggedIn}
             />
           );
         })}

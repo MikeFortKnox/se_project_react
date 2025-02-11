@@ -22,6 +22,11 @@
   line-height: 20px;
 }
 
+.modal__button-container {
+  display: flex;
+  gap: 10px;
+}
+
 .modal__close {
   width: 20px;
   height: 20px;
@@ -102,3 +107,48 @@
   margin-top: 25px;
   font-weight: 700;
 }
+
+.modal__to-register {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__to-login {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 700;
+  font-family: "Cabinet Grotesk", sans-serif;
+  color: rgba(0, 0, 0, 0.5);
+}
+/* .login__from-register {
+  width: 124px;
+  height: 36px;
+  top: 557px;
+  left: 500px;
+  gap: 12px;
+  border: 1px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+  font-weight: 700;
+}
+
+.register__from-login {
+  width: 124px;
+  height: 36px;
+  top: 557px;
+  left: 500px;
+  gap: 12px;
+  border: 1px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+  font-weight: 700;
+} */

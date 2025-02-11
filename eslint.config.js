@@ -35,11 +35,5 @@ export default [
       ],
       "react/prop-types": 0,
     },
-    overrides: [
-      {
-        // Without this, `npx eslint .` doesn't run on jsx files.
-        files: ["*.js", "*.jsx"],
-      },
-    ],
   },
 ];
