@@ -127,28 +127,33 @@
   font-family: "Cabinet Grotesk", sans-serif;
   color: rgba(0, 0, 0, 0.5);
 }
-/* .login__from-register {
-  width: 124px;
-  height: 36px;
-  top: 557px;
-  left: 500px;
-  gap: 12px;
+
+.modal__save {
+  margin-top: 8px;
+  margin-right: 16px;
   border: 1px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  margin-top: 25px;
+  color: white;
+  background-color: black;
+  height: 36px;
+  width: 128px;
   font-weight: 700;
+  font-size: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  cursor: pointer;
 }
 
-.register__from-login {
-  width: 124px;
-  height: 36px;
-  top: 557px;
-  left: 500px;
-  gap: 12px;
+.modal__edit-profile {
+  margin-top: 32px;
+  margin-right: 16px;
   border: 1px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  margin-top: 25px;
+  color: white;
+  background-color: black;
+  height: 36px;
+  width: 128px;
   font-weight: 700;
-} */
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -49,6 +49,10 @@ const EditProfileModal = ({ onClose, onRegisterModalSubmit, isOpen }) => {
           onChange={handleAvatar}
         />
       </label>
+      <button type="submit" className="modal__edit-profile">
+        {" "}
+        Save Changes{" "}
+      </button>
     </ModalWithForm>
   );
 };

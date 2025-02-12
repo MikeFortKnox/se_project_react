@@ -51,6 +51,7 @@ function loginUser({ email, password }) {
 // check user
 
 function addItems({ name, imageUrl, weather }) {
+  console.log(name, imageUrl, weather);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {

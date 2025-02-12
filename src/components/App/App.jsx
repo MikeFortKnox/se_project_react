@@ -4,16 +4,12 @@ import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-// import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import Profile from "../Profile/Profile";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-// import ItemCard from "../ItemCard/ItemCard";
-// import ClothesSection from "../ClothesSection/ClothesSection";
-// import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -31,7 +27,6 @@ import {
   getCurrentUser,
 } from "../../utils/api.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
-// import { updateUser } from "../../../../se_project_express-main/controllers/users.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
