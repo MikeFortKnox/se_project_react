@@ -15,13 +15,16 @@ const LoginModal = ({ onClose, onLogin, isOpen, handleRegister }) => {
     setPassword(event.target.value);
   };
 
+  function resetForm() {
+    setEmail("");
+    setPassword("");
+  }
+
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     if (email && password) {
-      onLogin(email, password);
+      onLogin(email, password, resetForm);
       // Optionally reset the form fields after submission
-      setEmail("");
-      setPassword("");
     } else {
       alert("Please fill in all fields.");
     }

@@ -32,8 +32,15 @@ const RegisterModal = ({
 
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
-    onRegisterModalSubmit(name, email, password, avatar);
+    onRegisterModalSubmit(name, email, password, avatar, resetForm);
   };
+
+  function resetForm() {
+    setEmail("");
+    setPassword("");
+    setName("");
+    setAvatar("");
+  }
 
   return (
     <ModalWithForm

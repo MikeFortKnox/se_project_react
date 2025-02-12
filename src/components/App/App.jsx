@@ -44,7 +44,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     name: "",
     email: "",
-    password: "",
+    avatar: "",
+    _id: "",
   });
 
   const handleCardClick = (card) => {
@@ -100,13 +101,20 @@ function App() {
       });
   };
 
-  const handleRegisterModalSubmit = (name, email, password, avatar) => {
+  const handleRegisterModalSubmit = (
+    name,
+    email,
+    password,
+    avatar,
+    resetForm
+  ) => {
     return createUser({ name, email, password, avatar })
       .then(() => {
         // fetch to the express server to create a user in the database
         // call some function to log the user in. ie: handleLoginModalSubmit
         // close the modal
         closeActiveModal();
+        resetForm();
         handleLoginModalSubmit(email, password);
       })
       .catch((error) => {
@@ -114,13 +122,18 @@ function App() {
       });
   };
 
-  const handleLoginModalSubmit = (email, password) => {
-    return loginUser({ email, password }).then((data) => {
-      localStorage.setItem("token", data.token);
-      setCurrentUser(data.user);
-      setIsLoggedIn(true);
-      closeActiveModal();
-    });
+  const handleLoginModalSubmit = (email, password, resetForm) => {
+    return loginUser({ email, password })
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        setCurrentUser(data.user);
+        setIsLoggedIn(true);
+        closeActiveModal();
+        resetForm();
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
   };
 
   const handleLogout = () => {
@@ -160,7 +173,11 @@ function App() {
           setIsLoggedIn(true);
         })
         .catch(() => {
-          setCurrentUser("");
+          setCurrentUser({
+            name: "",
+            email: "",
+            password: "",
+          });
           setIsLoggedIn(false);
         });
     }
@@ -218,7 +235,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               handleLogin={handleLogin}
               handleRegister={handleRegister}
-              currentUser={currentUser}
+              // currentUser={currentUser}
             />
             <Routes>
               <Route
