@@ -307,7 +307,7 @@ function App() {
             isOpen={activeModal === "edit"}
             onClose={closeActiveModal}
             onRegisterModalSubmit={handleEditModalSubmit}
-            currentUser={currentUser}
+            // currentUser={currentUser}
           />
         </CurrentUserContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
