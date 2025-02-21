@@ -1,6 +1,5 @@
 // import user from "../../../se_project_express-main/models/user";
-
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../../../se_project_express-main/utils/constants";
 
 function getToken() {
   return localStorage.getItem("token");
