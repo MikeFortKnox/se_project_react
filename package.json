@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://wtwr.b33r.us",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build",
+    "predeploy": "npm run build && scp -r ./dist/* mknx51297@wtwr.b33r.us:/home/mknx51297/frontend  "
   },
   "dependencies": {
     "express-winston": "^4.2.0",
