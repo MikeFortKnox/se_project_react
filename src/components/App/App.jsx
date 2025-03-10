@@ -129,7 +129,9 @@ function App() {
         setCurrentUser(data.user);
         setIsLoggedIn(true);
         closeActiveModal();
-        resetForm();
+        if (resetForm) {
+          resetForm();
+        }
       })
       .catch((error) => {
         console.error("Login failed:", error);
